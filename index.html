@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prototipo · Portal de Proveedores Edoméx v7</title>
+  <title>Prototipo · Portal de Proveedores Edoméx v8</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -14,11 +14,11 @@
         <div>
           <div class="eyebrow">OFICIALÍA MAYOR · PROTOTIPO FUNCIONAL</div>
           <h1>Portal de Proveedores</h1>
-          <p>Registro, expediente digital, validación, control de sanciones, pago de derechos y expedición de cédula</p>
+          <p>Registro, renovación, movimientos del padrón, expediente digital, validación, pago y expedición de cédula</p>
         </div>
       </div>
       <div class="top-actions">
-        <span class="env-badge">DEMO v7</span>
+        <span class="env-badge">DEMO v8</span>
         <button id="goPublic" class="btn btn-ghost btn-small" type="button">Portal público</button>
         <button id="resetDemo" class="btn btn-secondary btn-small" type="button">Restablecer demo</button>
       </div>
@@ -40,10 +40,11 @@
           <div>
             <span class="kicker">Portal de acceso abierto</span>
             <h2>Registro y atención en línea de proveedores</h2>
-            <p>Consulte información sin iniciar sesión. Para gestionar un trámite, el proveedor puede crear un acceso nuevo o ingresar con su cuenta para iniciar, continuar y retroalimentar en línea una solicitud de <b>Alta</b> o <b>Renovación</b>.</p>
+            <p>Consulte información sin iniciar sesión. Para gestionar un trámite, un nuevo proveedor puede registrarse e iniciar su <b>Alta</b>. Un proveedor registrado puede iniciar o continuar <b>Renovación, Modificación, Duplicado o Reposición</b>, integrar documentos y atender la retroalimentación en línea.</p>
             <div class="public-actions">
               <button class="btn btn-primary" id="newProviderBtn" type="button">Nuevo proveedor · Registrarme</button>
               <button class="btn btn-secondary" id="existingProviderBtn" type="button">Ingresar / continuar trámite</button>
+              <button class="btn btn-ghost" id="coordinatorAccessBtn" type="button">Responsable de asignación</button>
               <button class="btn btn-ghost" id="reviewerAccessBtn" type="button">Acceso de autoridad</button>
               <button class="btn btn-ghost" type="button" data-public-jump="verificarPortal">Verificar cédula</button>
             </div>
@@ -53,6 +54,7 @@
             <span class="kicker">Accesos rápidos</span>
             <button class="quick-link" type="button" data-public-jump="requisitosPortal"><b>Requisitos para Alta</b><span>Qué información preparar antes de iniciar</span></button>
             <button class="quick-link" type="button" data-public-jump="requisitosPortal"><b>Requisitos para Renovación</b><span>Actualizar el registro vigente</span></button>
+            <button class="quick-link" type="button" data-public-jump="requisitosPortal"><b>Modificación, Duplicado y Reposición</b><span>Movimientos adicionales del padrón</span></button>
             <button class="quick-link" type="button" data-public-action="tracking"><b>Consultar mi trámite</b><span>Ingresar para ver estatus y responder</span></button>
             <button class="quick-link" type="button" data-public-jump="verificarPortal"><b>Verificar una cédula</b><span>Consulta pública de autenticidad y vigencia</span></button>
             <button class="quick-link" type="button" data-public-jump="faqPortal"><b>Preguntas frecuentes</b><span>Conozca el flujo propuesto</span></button>
@@ -61,84 +63,140 @@
       </div>
 
       <section id="tramitesPortal" class="portal-section">
-        <div class="section-heading"><div><span class="kicker">Trámites disponibles</span><h3>¿Qué desea realizar?</h3></div><p>El proveedor trabaja el expediente de manera electrónica y la autoridad valida en línea; cuando proceda, puede citarlo para cotejo. Una vez validado el expediente, se notifica el pago de derechos como requisito previo a la expedición de la cédula.</p></div>
+        <div class="section-heading"><div><span class="kicker">Trámites disponibles</span><h3>¿Qué desea realizar?</h3></div><p>El expediente se integra de manera electrónica. La autoridad revisa la información y los documentos digitales, puede retroalimentar al proveedor y citarlo para cotejo cuando proceda. El pago se notifica después de la validación favorable y antes de expedir la cédula correspondiente.</p></div>
         <div class="service-grid">
           <article class="service-card featured">
             <span class="service-tag">Nuevo proveedor</span><h3>Alta</h3>
-            <p>Creación del acceso, captura de la Cédula, integración del expediente, envío a validación y atención de observaciones.</p>
-            <button class="btn btn-primary" type="button" data-public-action="new">Iniciar Alta</button>
+            <p>Primera inscripción al Padrón de Proveedores y Prestadores de Servicios.</p>
+            <button class="btn btn-primary" type="button" data-public-action="new">Registrarme e iniciar Alta</button>
           </article>
           <article class="service-card">
             <span class="service-tag">Proveedor registrado</span><h3>Renovación</h3>
-            <p>Ingreso al portal para actualizar la información del registro y presentar nuevamente el expediente correspondiente.</p>
-            <button class="btn btn-secondary" type="button" data-public-action="existing">Iniciar Renovación</button>
+            <p>Actualización del registro, expediente y documentación requerida, incluyendo cédula anterior y declaración de cambios.</p>
+            <button class="btn btn-secondary" type="button" data-public-action="existing">Ingresar para renovar</button>
+          </article>
+          <article class="service-card">
+            <span class="service-tag">Movimiento</span><h3>Modificación</h3>
+            <p>Solicitud de actualización de datos respaldada por el documento que acredita el cambio.</p>
+            <button class="btn btn-secondary" type="button" data-public-action="existing">Ingresar para modificar</button>
+          </article>
+          <article class="service-card">
+            <span class="service-tag">Movimiento</span><h3>Duplicado</h3>
+            <p>Solicitud de duplicado de la cédula para un proveedor ya registrado.</p>
+            <button class="btn btn-secondary" type="button" data-public-action="existing">Ingresar para duplicado</button>
+          </article>
+          <article class="service-card">
+            <span class="service-tag">Movimiento</span><h3>Reposición</h3>
+            <p>Reposición de cédula; el expediente contempla la denuncia correspondiente ante la Fiscalía General de Justicia.</p>
+            <button class="btn btn-secondary" type="button" data-public-action="existing">Ingresar para reposición</button>
           </article>
           <article class="service-card">
             <span class="service-tag">En línea</span><h3>Seguimiento</h3>
-            <p>Consulta de estatus, mensajes de la autoridad, respuesta a observaciones, confirmación de cita de cotejo y notificación de pago de derechos cuando corresponda.</p>
+            <p>Consulte estatus, observaciones, citas para cotejo, pago y expedición de la cédula.</p>
             <button class="btn btn-secondary" type="button" data-public-action="tracking">Consultar trámite</button>
           </article>
         </div>
       </section>
 
       <section id="requisitosPortal" class="portal-section">
-        <div class="section-heading"><div><span class="kicker">Preparación del trámite</span><h3>Información base identificada en la Cédula</h3></div><p>Esta sección se construye únicamente con la Cédula y su instructivo. Los requisitos documentales definitivos deberán validarse con la autoridad competente.</p></div>
+        <div class="section-heading"><div><span class="kicker">Requisitos documentales</span><h3>Expediente según trámite y tipo de persona</h3></div><p>El prototipo utiliza el documento de requisitos aportado como base para construir listas diferenciadas para Persona Jurídico Colectiva y Persona Física, así como para los movimientos adicionales del padrón.</p></div>
         <div class="requirements-grid">
           <article class="card req-card">
-            <div class="req-head"><span class="req-icon">A</span><div><h3>Alta</h3><small>Primera inscripción</small></div></div>
+            <div class="req-head"><span class="req-icon">A</span><div><h3>Alta</h3><small>Persona Jurídico Colectiva / Persona Física</small></div></div>
             <ul class="clean-list">
-              <li>Nombre, denominación o razón social y antigüedad en el ramo.</li>
-              <li>Domicilio fiscal y comercial, teléfonos, correo y página web.</li>
-              <li>Acta constitutiva o acta de nacimiento, folio fiscal/idCIF y RFC.</li>
-              <li>Representante legal o propietario y poder notarial cuando aplique.</li>
-              <li>Actividad preponderante, socios principales y hasta seis giros.</li>
-              <li>Información financiera del mes inmediato anterior, personal, áreas, proveedores, clientes y condiciones ofrecidas.</li>
+              <li>Documentos constitutivos o acta de nacimiento, identificación y representación, según el tipo de persona.</li>
+              <li>Carta Compromiso de Actualización de Datos y Documentos.</li>
+              <li>Constancia de Situación Fiscal y declaración fiscal del ejercicio inmediato anterior.</li>
+              <li>Información del contador y estados financieros conforme a la revisión previa.</li>
+              <li>Cédula de Registro e Identificación y dos fotografías del representante legal.</li>
+              <li>Certificado de Empresa Mexiquense: opcional; otros documentos pueden aplicar de forma condicional.</li>
             </ul>
+            <div class="fee-note"><b>Referencia del documento 2025:</b> $944.00 una vez autorizada la cédula.</div>
             <button class="btn btn-primary full" type="button" data-public-action="new">Registrarme e iniciar</button>
           </article>
           <article class="card req-card">
-            <div class="req-head"><span class="req-icon">R</span><div><h3>Renovación</h3><small>Actualización de registro</small></div></div>
+            <div class="req-head"><span class="req-icon">R</span><div><h3>Renovación</h3><small>Proveedor ya registrado</small></div></div>
             <ul class="clean-list">
-              <li>Seleccionar el tipo de solicitud como Renovación.</li>
-              <li>Revisar y actualizar la información general y registros oficiales.</li>
-              <li>Actualizar actividad, socios y giros cuando corresponda.</li>
-              <li>Capturar nuevamente las razones financieras con cifras del mes inmediato anterior.</li>
-              <li>Actualizar capacidad administrativa y comercial.</li>
-              <li>Confirmar la declaración final y enviar el expediente para validación.</li>
+              <li>Actualiza el expediente documental correspondiente a su tipo de persona.</li>
+              <li>Debe integrar la <b>cédula anterior</b>.</li>
+              <li>Debe presentar carta bajo protesta respecto de cambios fiscales o comerciales y, si existieron, documentación que los acredite.</li>
+              <li>Se mantienen controles de revisión de constancia fiscal, estados financieros, firmas, fotografías y parámetros financieros.</li>
             </ul>
+            <div class="fee-note"><b>Referencia del documento 2025:</b> $944.00 una vez autorizada la cédula.</div>
             <button class="btn btn-secondary full" type="button" data-public-action="existing">Ingresar para renovar</button>
           </article>
+          <article class="card req-card">
+            <div class="req-head"><span class="req-icon">M</span><div><h3>Modificación</h3><small>Actualización de datos</small></div></div>
+            <ul class="clean-list">
+              <li>Solicitud por escrito dirigida al Director General de Recursos Materiales de la Oficialía Mayor.</li>
+              <li>Documento que acredite el cambio.</li>
+              <li>Dos fotografías recientes tamaño infantil del representante legal.</li>
+              <li>Cédula de proveedor en original.</li>
+            </ul>
+            <div class="fee-note"><b>Referencia del documento 2025:</b> $472.00 una vez autorizado el movimiento.</div>
+          </article>
+          <article class="card req-card">
+            <div class="req-head"><span class="req-icon">D</span><div><h3>Duplicado</h3><small>Proveedor registrado</small></div></div>
+            <ul class="clean-list">
+              <li>Solicitud por escrito dirigida al Director General de Recursos Materiales.</li>
+              <li>Poder notarial, original y copia.</li>
+              <li>Dos fotografías recientes tamaño infantil del representante legal.</li>
+            </ul>
+            <div class="fee-note"><b>Referencia del documento 2025:</b> $472.00 una vez autorizado el movimiento.</div>
+          </article>
+          <article class="card req-card">
+            <div class="req-head"><span class="req-icon">RP</span><div><h3>Reposición</h3><small>Pérdida de cédula</small></div></div>
+            <ul class="clean-list">
+              <li>Solicitud por escrito dirigida al Director General de Recursos Materiales.</li>
+              <li>Poder notarial, original y copia.</li>
+              <li>Denuncia ante la Fiscalía General de Justicia con número de cédula y razón social.</li>
+              <li>Dos fotografías recientes tamaño infantil del representante legal.</li>
+            </ul>
+            <div class="fee-note"><b>Referencia del documento 2025:</b> $472.00 una vez autorizado el movimiento.</div>
+          </article>
+          <article class="card req-card">
+            <div class="req-head"><span class="req-icon">✓</span><div><h3>Reglas de revisión previa</h3><small>Controles documentales</small></div></div>
+            <ul class="clean-list">
+              <li>Fechas de formatos y cartas al día del trámite e identificaciones vigentes.</li>
+              <li>Objeto social / actividades económicas ante SAT vigentes y consistentes.</li>
+              <li>Revisión de capital social y documentos legales cuando aplique.</li>
+              <li>Estados financieros del mes inmediato anterior y parámetros: Endeudamiento ≤ 0.40; Liquidez ≥ 1.0; Solvencia ≥ 1.0.</li>
+              <li>Firmas autógrafas en tinta azul en la documentación que corresponda.</li>
+            </ul>
+          </article>
         </div>
-        <div class="source-note"><b>Nota del formato actual:</b> el instructivo proporcionado señala que la Cédula debe llenarse digitalmente e imprimirse para firma autógrafa original. En este prototipo, la captura y retroalimentación son electrónicas; el mecanismo definitivo de firma debe definirse en la implementación.</div>
+        <div class="source-note"><b>Operación actual descrita en el documento:</b> el proveedor debe registrarse en COMPRAMEX y subir los documentos en formato PDF; si la información es correcta se le notifica para agendar cita. Los documentos se presentan en original o copia certificada y copia simple para su cotejo. En este prototipo, ese flujo se representa mediante expediente digital, validación en línea y cita de cotejo.</div>
       </section>
 
       <section id="seguimientoPortal" class="portal-section">
-        <div class="section-heading"><div><span class="kicker">Modelo de atención</span><h3>Proceso digital de punta a punta</h3></div><p>El cotejo se incorpora como una decisión de la autoridad. Antes de validar favorablemente el Alta o Renovación, la autoridad debe verificar que la empresa no se encuentre en el Registro de Empresas Objetadas y Sancionadas de la Contraloría General.</p></div>
-        <div class="journey" aria-label="Flujo de Alta o Renovación">
+        <div class="section-heading"><div><span class="kicker">Modelo de atención</span><h3>Proceso digital de punta a punta</h3></div><p>El cotejo se incorpora como una decisión de la autoridad. Antes de autorizar un Alta, el prototipo exige verificar que la empresa no se encuentre en el Registro de Empresas Objetadas y Sancionadas de la Contraloría General. Los demás movimientos conservan su expediente y controles específicos.</p></div>
+        <div class="journey" aria-label="Flujo de trámites del padrón">
           <div class="journey-step"><span>1</span><b>Registro / acceso</b><small>Portal abierto y cuenta del proveedor</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>2</span><b>Alta o Renovación</b><small>Inicio y guardado en línea</small></div>
+          <div class="journey-step"><span>2</span><b>Trámite del padrón</b><small>Alta, Renovación u otro movimiento</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>3</span><b>Cédula + expediente</b><small>Captura y documentación</small></div>
+          <div class="journey-step"><span>3</span><b>Solicitud + expediente</b><small>Requisitos según trámite y persona</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>4</span><b>Validación</b><small>Revisión por la autoridad</small></div>
+          <div class="journey-step"><span>4</span><b>Asignación</b><small>La autoridad distribuye el expediente a un analista o revisor</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>5</span><b>Retroalimentación</b><small>Observaciones y respuesta en línea</small></div>
+          <div class="journey-step"><span>5</span><b>Validación</b><small>Revisión por el servidor público asignado</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step conditional"><span>6</span><b>Cotejo, si procede</b><small>Cita y confirmación</small></div>
+          <div class="journey-step"><span>6</span><b>Retroalimentación</b><small>Observaciones y respuesta en línea</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step sanctions-step"><span>7</span><b>Consulta de sanciones</b><small>Verificación previa en registro de Contraloría</small></div>
+          <div class="journey-step conditional"><span>7</span><b>Cotejo, si procede</b><small>Cita y confirmación</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>8</span><b>Expediente validado</b><small>Validación favorable</small></div>
+          <div class="journey-step sanctions-step"><span>8</span><b>Control de sanciones</b><small>Obligatorio previo al Alta en este prototipo</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step payment-step"><span>9</span><b>Pago de derechos</b><small>Notificación, pago y comprobante</small></div>
+          <div class="journey-step"><span>9</span><b>Expediente validado</b><small>Validación favorable</small></div>
           <div class="journey-arrow">→</div>
-          <div class="journey-step"><span>10</span><b>Cédula expedida</b><small>Después de validar el pago</small></div>
+          <div class="journey-step payment-step"><span>10</span><b>Pago de derechos</b><small>Notificación, pago y comprobante</small></div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step"><span>11</span><b>Cédula expedida</b><small>Después de validar el pago</small></div>
         </div>
         <div class="callout-grid four">
           <article class="card"><span class="kicker">Proveedor</span><h3>Puede retroalimentar en línea</h3><p>El expediente no se cierra por una observación: el proveedor recibe el requerimiento, corrige o aclara y vuelve a enviar para validación.</p></article>
-          <article class="card"><span class="kicker">Autoridad</span><h3>Accede al expediente digital completo</h3><p>Durante la revisión consulta la información capturada en la Cédula y los documentos digitales aportados por el proveedor, con opción de visualizar cada archivo.</p></article>
-          <article class="card"><span class="kicker">Control previo</span><h3>Consulta empresas objetadas o sancionadas</h3><p>Antes de la validación favorable, la autoridad debe documentar la consulta al Registro de Empresas Objetadas y Sancionadas de la Contraloría General. Una coincidencia bloquea la autorización en este prototipo.</p></article>
+          <article class="card"><span class="kicker">Autoridad</span><h3>Accede al expediente digital completo</h3><p>Durante la revisión consulta la información capturada en la solicitud o Cédula y los documentos digitales aportados por el proveedor, con opción de visualizar cada archivo.</p></article>
+          <article class="card"><span class="kicker">Control previo</span><h3>Consulta empresas objetadas o sancionadas</h3><p>Para el Alta, la autoridad debe documentar la consulta al Registro de Empresas Objetadas y Sancionadas de la Contraloría General. Una coincidencia bloquea la autorización en este prototipo.</p></article>
           <article class="card"><span class="kicker">Pago de derechos</span><h3>Se notifica después de validar el expediente</h3><p>La validación favorable no expide por sí sola la cédula. La autoridad notifica el pago de derechos; el proveedor reporta el pago en línea y, una vez verificado, la autoridad queda en condiciones de expedir la cédula.</p></article>
         </div>
       </section>
@@ -169,12 +227,13 @@
         <div class="faq-list">
           <details><summary>¿Necesito iniciar sesión para consultar el portal?</summary><p>No. La información general es pública. El acceso se solicita únicamente para iniciar, continuar o atender un trámite.</p></details>
           <details><summary>¿Un proveedor nuevo puede iniciar su Alta en línea?</summary><p>Sí, en el prototipo crea un acceso y se abre un trámite de Alta que puede guardar y continuar posteriormente.</p></details>
-          <details><summary>¿La Renovación también se realiza en línea?</summary><p>Sí. El proveedor registrado ingresa a su cuenta, actualiza la información y presenta el expediente para validación.</p></details>
+          <details><summary>¿La Renovación también se realiza en línea?</summary><p>Sí. El proveedor registrado ingresa a su cuenta, actualiza la información y presenta el expediente específico para validación.</p></details>
+          <details><summary>¿Qué otros movimientos puede realizar un proveedor registrado?</summary><p>El prototipo incorpora Modificación, Duplicado y Reposición, cada uno con su lista documental específica tomada del documento de requisitos aportado.</p></details>
           <details><summary>¿Qué sucede si la autoridad encuentra una observación?</summary><p>La autoridad envía retroalimentación dentro del expediente. El proveedor responde, corrige o complementa y lo reenvía a validación.</p></details>
           <details><summary>¿Todos los proveedores deben acudir a cotejo?</summary><p>No en este modelo. La autoridad genera una cita únicamente cuando determine que el cotejo procede.</p></details>
-          <details><summary>¿Cuándo se realiza el pago de derechos?</summary><p>Después de que la autoridad valida favorablemente el expediente de Alta o Renovación. La autoridad notifica al proveedor los datos para efectuar el pago. La cédula sólo puede expedirse después de que el pago sea reportado y validado.</p></details>
+          <details><summary>¿Cuándo se realiza el pago de derechos?</summary><p>Después de que la autoridad valida favorablemente el expediente del trámite. La autoridad notifica al proveedor los datos para efectuar el pago. La cédula sólo puede expedirse después de que el pago sea reportado y validado.</p></details>
           <details><summary>¿Cómo se validaría la autenticidad de una cédula?</summary><p>La versión demostrativa usa número de cédula, código de seguridad, huella digital y un sello gráfico 2D. En producción, el sello puede convertirse en un QR que dirija a una consulta pública y cuyo contenido esté firmado criptográficamente por el sistema.</p></details>
-          <details><summary>¿Qué revisa la autoridad antes de autorizar el Alta o Renovación?</summary><p>Además de revisar la información y documentación del expediente digital, el prototipo exige registrar una consulta previa al Registro de Empresas Objetadas y Sancionadas de la Contraloría General. Si se simula una coincidencia, la autorización queda bloqueada.</p></details>
+          <details><summary>¿Qué revisa la autoridad antes de autorizar un trámite?</summary><p>La autoridad revisa la información capturada y cada documento digital del expediente. Para el Alta, el prototipo exige además registrar una consulta previa al Registro de Empresas Objetadas y Sancionadas de la Contraloría General; una coincidencia bloquea la autorización demostrativa.</p></details>
           <details><summary>¿El prototipo ya está conectado con RUPAEMEX, CUTS o Llave EdoMéx?</summary><p>No. Es una simulación funcional sin conexiones reales. La integración institucional deberá definirse durante el diseño técnico.</p></details>
         </div>
       </section>
@@ -184,6 +243,7 @@
         <div class="norm-grid">
           <article class="norm-card"><span class="norm-type">Documento operativo</span><h3>Cédula de Registro e Identificación de Proveedores</h3><p>Fuente de los campos de Alta/Renovación, datos generales, registros, actividad, capacidad y declaración.</p><span class="norm-status ready">Incorporado</span></article>
           <article class="norm-card"><span class="norm-type">Documento operativo</span><h3>Instructivo de llenado de la Cédula</h3><p>Fuente de criterios de captura, máximo de giros, cifras financieras y firma del representante o propietario.</p><span class="norm-status ready">Incorporado</span></article>
+          <article class="norm-card"><span class="norm-type">Documento operativo</span><h3>Requisitos del Padrón: Alta, Renovación, Modificación, Duplicado y Reposición</h3><p>Fuente de los requisitos diferenciados por tipo de persona, revisión previa, cotejo y cuotas de referencia 2025.</p><span class="norm-status ready">Incorporado</span></article>
           <article class="norm-card muted-card"><span class="norm-type">Pendiente de validación</span><h3>Normativa aplicable al Padrón de Proveedores</h3><p>Espacio previsto para publicar leyes, reglamentos, acuerdos, lineamientos y disposiciones vigentes que determine la autoridad.</p><span class="norm-status pending">Por integrar</span></article>
         </div>
       </section>
@@ -224,7 +284,7 @@
       <article class="stat"><span>Folio</span><strong data-kpi="folio">Sin folio</strong><small>Trámite actual</small></article>
       <article class="stat"><span>Estatus</span><strong data-kpi="status">Borrador</strong><small>Situación actual</small></article>
       <article class="stat"><span>Avance</span><strong data-kpi="progress">0%</strong><small>Cédula capturada</small></article>
-      <article class="stat"><span>Documentos</span><strong data-kpi="docs">0/6</strong><small>Expediente soporte</small></article>
+      <article class="stat"><span>Documentos</span><strong data-kpi="docs">0/0</strong><small>Obligatorios integrados</small></article>
     </div>
     <div class="grid-2 mt24">
       <article class="card">
@@ -237,9 +297,9 @@
     </div>
     <div class="grid-2 mt24">
       <article class="card">
-        <span class="kicker">Nuevo trámite</span><h3>Alta o Renovación</h3>
-        <p>El proveedor puede iniciar un nuevo trámite desde el portal. En una implementación real, la Renovación podría recuperar datos del registro vigente.</p>
-        <div class="actions"><button class="btn btn-secondary" data-start-alta type="button">Iniciar Alta</button><button class="btn btn-secondary" data-start-renew type="button">Iniciar Renovación</button></div>
+        <span class="kicker">Nuevo trámite</span><h3>Movimientos del Padrón</h3>
+        <p>Un nuevo proveedor inicia Alta; un proveedor ya registrado puede iniciar Renovación, Modificación, Duplicado o Reposición.</p>
+        <div class="movement-actions"><button class="btn btn-secondary" data-start-alta type="button">Alta</button><button class="btn btn-secondary" data-start-renew type="button">Renovación</button><button class="btn btn-secondary" data-start-mod type="button">Modificación</button><button class="btn btn-secondary" data-start-dup type="button">Duplicado</button><button class="btn btn-secondary" data-start-rep type="button">Reposición</button></div>
       </article>
       <article class="card">
         <span class="kicker">Comunicación en línea</span><h3>Mensajes con la autoridad</h3>
@@ -262,7 +322,7 @@
 
   <template id="docsTpl">
     <div class="grid-2 docs-layout">
-      <article class="card"><span class="kicker">Expediente electrónico</span><h3>Documentación soporte</h3><p>Seleccione archivos para simular la integración del expediente. Sólo se conserva localmente el nombre del archivo.</p><div class="doc-list" data-doc-list></div></article>
+      <article class="card"><span class="kicker">Expediente electrónico</span><h3 data-docs-title>Documentación soporte</h3><p data-docs-intro>Seleccione archivos para simular la integración del expediente.</p><div class="source-note" data-docs-source-note></div><div class="doc-list" data-doc-list></div></article>
       <article class="card"><span class="kicker">Resumen</span><h3>Integración del expediente</h3><div class="donut-wrap"><div class="donut" data-donut><span data-doc-percent>0%</span></div></div><div class="checklist" data-doc-summary></div><button class="btn btn-primary full" data-return-form type="button">Volver a la cédula</button></article>
     </div>
   </template>
@@ -292,7 +352,7 @@
       <article class="stat"><span>Pago pendiente</span><strong data-payment-count>0</strong><small>Notificado / por verificar</small></article>
       <article class="stat"><span>Cédulas expedidas</span><strong data-issued-count>0</strong><small>Trámite concluido</small></article>
     </div>
-    <article class="card mt24"><div class="card-head"><div><span class="kicker">Bandeja de trabajo</span><h3>Solicitudes de proveedores</h3></div><span class="status-badge">Demo</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Folio</th><th>Proveedor</th><th>Trámite</th><th>Expediente</th><th>Registro Contraloría</th><th>Estatus</th><th></th></tr></thead><tbody data-review-table></tbody></table></div></article>
+    <article class="card mt24"><div class="card-head"><div><span class="kicker">Bandeja de trabajo</span><h3>Solicitudes de proveedores</h3></div><span class="status-badge">Demo</span></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Folio</th><th>Proveedor</th><th>Trámite</th><th>Expediente</th><th>Registro Contraloría</th><th>Estatus</th><th>Asignado a</th><th></th></tr></thead><tbody data-review-table></tbody></table></div></article>
   </template>
 
   <template id="reviewDetailTpl">
@@ -300,6 +360,7 @@
       <section>
         <article class="card"><div class="card-head"><div><span class="kicker">Expediente</span><h3 data-rd-name></h3></div><span class="status-badge" data-rd-status></span></div><div class="detail-list" data-rd-details></div></article>
         <article class="card mt24"><div class="card-head"><div><span class="kicker">Expediente digital</span><h3>Información capturada y documentos soporte</h3></div><span class="status-badge">Consulta integral</span></div><p>La autoridad puede revisar en una sola vista la información proporcionada por el proveedor y abrir los documentos digitales integrados al expediente.</p><div data-rd-expedient></div></article>
+        <article class="card mt24" data-rd-checklist-panel></article>
         <article class="card mt24" data-rd-sanctions-panel></article>
         <article class="card mt24" data-rd-payment-panel></article>
         <article class="card mt24"><span class="kicker">Bitácora</span><h3>Retroalimentación con el proveedor</h3><div class="message-thread" data-rd-thread></div></article>
@@ -309,7 +370,7 @@
           <span class="kicker">Validación</span><h3>Acciones de la autoridad</h3>
           <label>Observación o requerimiento<textarea data-rd-observations rows="5" placeholder="Indique la información que el proveedor debe aclarar, complementar o corregir..."></textarea></label>
           <div class="stack-actions"><button class="btn btn-warning full" data-rd-observe type="button">Enviar retroalimentación</button><button class="btn btn-secondary full" data-rd-cotejo type="button">Citar para cotejo</button><button class="btn btn-secondary full" data-rd-sanctions type="button">Verificar Registro de Empresas Objetadas y Sancionadas</button><button class="btn btn-primary full" data-rd-approve type="button">Validar expediente y notificar pago</button><button class="btn btn-ghost full" data-rd-back type="button">Regresar a bandeja</button></div>
-          <p class="micro">El cotejo es condicional. La consulta al Registro de Empresas Objetadas y Sancionadas es un control previo a la validación favorable. La expedición de la cédula ocurre únicamente después del pago de derechos.</p>
+          <p class="micro">El cotejo es condicional. La consulta al Registro de Empresas Objetadas y Sancionadas es obligatoria antes de autorizar el Alta en este prototipo. La expedición de la cédula ocurre únicamente después del pago de derechos.</p>
         </article>
       </aside>
     </div>

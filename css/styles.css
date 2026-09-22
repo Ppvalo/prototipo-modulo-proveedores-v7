@@ -80,3 +80,40 @@
 .sanctions-result{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:16px}.sanctions-result>div{border:1px solid var(--line);border-radius:9px;padding:10px;background:#fafafa}.sanctions-result small{display:block;color:var(--muted);margin-bottom:4px}.sanctions-result strong{display:block;font-size:.8rem;line-height:1.4;overflow-wrap:anywhere}
 @media(max-width:1100px){.callout-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.expedient-tabs{grid-template-columns:1fr}.document-meta,.sanctions-result{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.callout-grid.four,.exp-grid,.document-meta,.sanctions-result{grid-template-columns:1fr}.authority-doc-row{align-items:flex-start;flex-direction:column}.document-preview-frame{height:420px}}
+
+
+/* v8 · requisitos por trámite y movimientos adicionales */
+.movement-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.procedure-current{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line);background:#fafafa;border-radius:12px;padding:14px 16px;margin-top:16px}
+.procedure-current span{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.procedure-current strong{font-size:1rem;color:var(--wine)}
+.doc-title-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.doc-requirement{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border-radius:999px;padding:4px 7px}
+.doc-requirement.required{background:#fbe8e8;color:#872d2d}
+.doc-requirement.optional{background:#f3f0e9;color:#6d5a39}
+.fee-note{margin-top:auto;margin-bottom:14px;border-top:1px solid var(--line);padding-top:12px;color:#6a5840;font-size:.79rem;line-height:1.45}
+.req-card{display:flex;flex-direction:column}
+.req-card .clean-list{flex:1}
+@media(max-width:720px){
+  .procedure-current{align-items:flex-start;flex-direction:column}
+  .movement-actions{display:grid;grid-template-columns:1fr 1fr}
+}
+@media(max-width:460px){
+  .movement-actions{grid-template-columns:1fr}
+}
+
+.review-checklist{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.review-check{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:10px 11px;background:#fafafa;font-size:.79rem;line-height:1.4}
+.review-check input{margin-top:2px;flex:0 0 auto}
+@media(max-width:760px){.review-checklist{grid-template-columns:1fr}}
+
+/* Extensión · Responsable de Asignación del Padrón de Proveedores */
+.stats-grid.stats-six{grid-template-columns:repeat(6,minmax(0,1fr))}.coordinator-stats .stat{padding:17px}.coordinator-stats .stat strong{font-size:1.6rem}
+.status-badge.assignment-new{background:#eef1f4;color:#4b5563}.status-badge.assignment-pending{background:#fff1d7;color:#8a5500}.status-badge.assignment-assigned{background:#e8eff8;color:#274f76}.status-badge.assignment-review{background:#ece8f8;color:#58428b}.status-badge.assignment-observed{background:#fee5e5;color:#9a2626}.status-badge.assignment-attended{background:#e7f2f0;color:#25665a}.status-badge.assignment-done{background:#e4f5eb;color:#16643d}
+.coordinator-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}.coordinator-filters label{font-size:.8rem}.filter-search{grid-column:span 2}.table-action-group{display:flex;gap:6px;flex-wrap:wrap}.data-table td small{display:block;color:var(--muted);margin-top:3px}.history-detail{max-width:420px;line-height:1.4}
+.assignment-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.assignment-detail-grid>div,.assignment-context>div{border:1px solid var(--line);border-radius:9px;padding:11px;background:#fafafa;min-width:0}.assignment-detail-grid small,.assignment-context small{display:block;color:var(--muted);margin-bottom:5px}.assignment-detail-grid strong,.assignment-context strong{display:block;overflow-wrap:anywhere}.assignment-history-section{margin-top:22px}.assignment-history-section h3{margin:5px 0 12px}
+.assignment-context{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:20px}.assignment-context.compact{grid-template-columns:repeat(2,minmax(0,1fr));margin:14px 0 0}.assignment-selector>p{color:var(--muted)}.analyst-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.analyst-option{display:flex!important;flex-direction:row!important;align-items:flex-start;gap:10px!important;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;cursor:pointer}.analyst-option:has(input:checked){border-color:var(--wine);box-shadow:0 0 0 2px rgba(122,23,55,.08);background:#fffafa}.analyst-option input{width:auto;margin-top:3px}.analyst-option span{display:flex;flex-direction:column;gap:3px}.analyst-option small{color:var(--muted)}.analyst-option em{font-style:normal;font-size:.72rem;color:#5e6470;line-height:1.45}.reassign-reason{margin-top:18px}
+.workload-bar-track{height:8px;background:#ececec;border-radius:999px;overflow:hidden;min-width:150px;margin-bottom:5px}.workload-bar{display:block;height:100%;background:var(--wine);border-radius:999px}.workload-table td:nth-child(2),.workload-table td:nth-child(3),.workload-table td:nth-child(4){font-weight:800}
+@media(max-width:1250px){.stats-grid.stats-six{grid-template-columns:repeat(3,minmax(0,1fr))}.coordinator-filters{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.coordinator-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-search{grid-column:span 2}.assignment-context{grid-template-columns:repeat(2,minmax(0,1fr))}.analyst-options{grid-template-columns:1fr}}
+@media(max-width:620px){.stats-grid.stats-six,.coordinator-filters,.assignment-detail-grid,.assignment-context,.assignment-context.compact{grid-template-columns:1fr}.filter-search{grid-column:auto}.assignment-detail-grid .span2{grid-column:auto}}
